@@ -380,6 +380,13 @@ export default function Dashboard() {
               await new Promise(resolve => setTimeout(resolve, 300));
               setShowDashboardView(true);
               setIsDashboardLoading(false);
+              setTimeout(() => {
+                const dashboardHeader = document.getElementById('dashboard-container');
+                if (dashboardHeader) {
+                  const y = dashboardHeader.getBoundingClientRect().top + window.scrollY - 30;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }, 100);
             }}>
               <BarChart2 size={20} /> {isDashboardLoading ? 'Loading...' : 'View Dashboard'}
             </button>
@@ -721,7 +728,7 @@ export default function Dashboard() {
 
         {/* Semantic Clusters Dashboard View */}
         {showDashboardView && (
-          <>
+          <div id="dashboard-container">
             <div style={{ display: 'flex', gap: '15px', flexWrap: 'nowrap', marginTop: '10px', marginBottom: '25px' }}>
               <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>REVIEWS ANALYZED</div>
@@ -807,7 +814,7 @@ export default function Dashboard() {
               })}
             </div>
           </div>
-          </>
+          </div>
         )}
         {/* Universal Footer */}
         <div className="footer-line" style={{ padding: '40px 20px', textAlign: 'center', marginTop: 'auto' }}>
