@@ -52,7 +52,8 @@ export default function Dashboard() {
     setCustomResult(null);
 
     try {
-      const response = await fetch('http://localhost:8000/api/ask-custom-question', {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${API_BASE}/api/ask-custom-question`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: customQuestion })
@@ -173,7 +174,8 @@ export default function Dashboard() {
       // Artificial delay for UX: Let the 6-step loading animation play out
       await new Promise(resolve => setTimeout(resolve, 6500));
 
-      const response = await fetch('http://localhost:8000/api/ask-groq', {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${API_BASE}/api/ask-groq`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })
