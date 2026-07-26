@@ -18,6 +18,7 @@ export default function Dashboard() {
   const [selectedQuestionFilter, setSelectedQuestionFilter] = useState("All");
   const [isDashboardLoading, setIsDashboardLoading] = useState(false);
   const [showDashboardView, setShowDashboardView] = useState(false);
+  const [initialLoadError, setInitialLoadError] = useState("");
 
   const [customQuestion, setCustomQuestion] = useState("");
   const [isAskingCustom, setIsAskingCustom] = useState(false);
@@ -275,21 +276,28 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
         const [themesRes, statsRes] = await Promise.all([
-          fetch('http://localhost:8000/api/themes'),
-          fetch('http://localhost:8000/api/stats')
+          fetch(`${API_BASE}/api/themes`),
+          fetch(`${API_BASE}/api/stats`)
         ]);
 
         if (themesRes.ok) {
           const themesData = await themesRes.json();
           setThemes(themesData);
+        } else {
+          setInitialLoadError(`API Error: /api/themes returned ${themesRes.status}`);
         }
+        
         if (statsRes.ok) {
           const statsData = await statsRes.json();
           setStats(statsData);
+        } else {
+          if(!initialLoadError) setInitialLoadError(`API Error: /api/stats returned ${statsRes.status}`);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error fetching data:", error);
+        setInitialLoadError("Failed to connect to backend. Please check NEXT_PUBLIC_API_URL in production.");
       } finally {
         setLoading(false);
       }
@@ -316,6 +324,12 @@ export default function Dashboard() {
           AI-Powered · {stats.total_reviews ? stats.total_reviews.toLocaleString() : '1,917'}+ Reviews
         </div>
       </div>
+
+      {initialLoadError && (
+        <div style={{ backgroundColor: '#EF4444', color: 'white', padding: '12px', textAlign: 'center', fontWeight: 'bold' }}>
+          ⚠️ Dashboard Data Failed to Load: {initialLoadError}
+        </div>
+      )}
 
       <div className="container">
         <div className="header">
