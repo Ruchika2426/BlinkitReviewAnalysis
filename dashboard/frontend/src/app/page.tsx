@@ -367,7 +367,7 @@ export default function Dashboard() {
 
 
         {/* CTA Button */}
-        <div className="cta-container" style={{ marginBottom: '40px', textAlign: 'center' }}>
+        <div className="cta-container" style={{ marginBottom: '100px', textAlign: 'center' }}>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', width: '100%', maxWidth: '600px', margin: '0 auto' }}>
             <button id="main-run-btn" className="run-btn" style={{ flex: 1 }} onClick={() => {
               setShowDashboardView(false);
