@@ -1,0 +1,239 @@
+🎵
+Discovery Problems
+Question 1
+Why do users struggle to discover new music?
+Finding 1
+
+Observation: (Single-review finding) Users experience repetitive playlists and recommendations.
+
+Supporting evidence: Review 63 [Play Store]: "It keeps repeating the same songs in my playlist over and over again even if my playlist is 27 hours long."
+
+Why it matters: Stale recommendations can lead to a lack of discovery and engagement.
+
+🤖
+Recommendation Frustrations
+Question 2
+What are the most common frustrations with recommendations?
+Users struggle to find new artists.
+
+Finding 2
+
+Observation: Users find it difficult to discover new music through the app.
+
+Supporting evidence: Review 58 [Play Store]: "When I enable smart shuffle it ruins my custom playlists." Review 41 [Play Store]: "The discover weekly and Release Radar playlist are always on point, introducing me to new artists and tracks."
+
+Why it matters: Difficulty finding new artists can lead to a lack of exploration and discovery.
+
+🎧
+Listening Behaviors
+Question 3
+What listening behaviors are users trying to achieve?
+Users experience algorithm "safe-zones".
+
+Finding 3
+
+Observation: (Single-review finding) Users feel that the algorithm plays it safe and doesn't take risks.
+
+Supporting evidence: Review 3 [App Store]: "When I use the dj it just plays the same stuff If I wanted to hear my liked sounds I would select my liked songs playlist"
+
+Why it matters: Algorithm "safe-zones" can lead to a lack of surprise and discovery.
+
+🔁
+Repetitive Listening
+Question 4
+What causes users to repeatedly listen to the same content?
+Users struggle with weak exploration loops.
+
+Finding 4
+
+Observation: Users find it difficult to navigate and manage their playlists and queue.
+
+Supporting evidence: Review 62 [Play Store]: "The UI change to the queue is so intensely frustrating. Please separate the things I added to the queue myself from the next up songs the algorithm selects." Review 66 [Play Store]: "Managing the Queue is hit and miss. Can add a few titles only to find the queue has been wiped. Cant change the order of play by dragging and dropping."
+
+Why it matters: Weak exploration loops can lead to frustration and a lack of engagement.
+
+2. What are the most common frustrations with recommendations?
+
+Finding 1
+
+Observation: (Single-review finding) Users experience repetition of the same songs in their playlists.
+
+Supporting evidence: Review 63 [Play Store]: "It keeps repeating the same songs in my playlist over and over again even if my playlist is 27 hours long."
+
+Why it matters: This repetition can ruin the listening experience for users.
+
+2. Personalization gaps are a concern for some users.
+
+Finding 2
+
+Observation: (Single-review finding) Users feel that the algorithm does not understand their preferences.
+
+Supporting evidence: Review 77 [Play Store]: "I like the Spotify DJ, but the app somehow turns off the DJ and switches automatically to Daily Mix 2 which I dont like."
+
+Why it matters: Users want the algorithm to respect their preferences and not override their choices.
+
+3. Shuffle and radio issues are a source of frustration for some users.
+
+Finding 3
+
+Observation: (Single-review finding) Users experience problems with smart shuffle and radio functionality.
+
+Supporting evidence: Review 58 [Play Store]: "When I enable smart shuffle it ruins my custom playlists."
+
+Why it matters: Users want to be able to use shuffle and radio features without issues.
+
+4. Lack of recommendation transparency is a frustration for some users.
+
+Finding 4
+
+Observation: (Single-review finding) Users want more control over the recommendations they receive.
+
+Supporting evidence: Review 62 [Play Store]: "The UI change to the queue is so intensely frustrating. Please separate the things I added to the queue myself from the next up songs the algorithm selects."
+
+Why it matters: Users want to understand how the algorithm is selecting recommendations and have more control over their listening experience.
+
+3. What listening behaviors are users trying to achieve?
+
+Finding 1
+
+Observation: Users are frustrated when they cannot listen to their liked songs in order.
+
+Supporting evidence: "Not being able to listen to the liked songs playlist is very frustrating." (Review 80), "If I wanted to hear my liked sounds I would select my liked songs playlist" (Review 3), "Constant popups for premium, cant skip without long ads, cant play albums in order, and they have even stopped you from playing your liked songs." (Review 37)
+
+Why it matters: This behavior is essential for users who value control over their listening experience.
+
+2. Users prefer to control their playlists and avoid auto-shuffle.
+
+Finding 2
+
+Observation: Users are dissatisfied with the app's auto-shuffle feature.
+
+Supporting evidence: "The radio is more than enough to discover new songs. When I enable smart shuffle it ruins my custom playlists." (Review 58), "My playlists are also on auto shuffle but it doesn't even work right." (Review 78)
+
+Why it matters: Users want to maintain control over their playlists and avoid unexpected changes.
+
+3. Users want to play songs from their playlists without interruptions.
+
+Finding 3
+
+Observation: (Single-review finding) Users are frustrated when they cannot play full songs from their playlists.
+
+Supporting evidence: "I try to play a song from my playlist but it doesn't play the full song, only a preview of it." (Review 78)
+
+Why it matters: Users want to enjoy their playlists without interruptions or incomplete songs.
+
+4. Users want to skip ads and enjoy uninterrupted listening.
+
+Finding 4
+
+Observation: Users are frustrated with ads and long skip times.
+
+Supporting evidence: "You cant even choose the songs you want to listen to, ads are everywhere. You cant skip, you cant make a playlist where its not on shuffle." (Review 43), "Constant popups for premium, cant skip without long ads" (Review 37)
+
+Why it matters: Users want to enjoy uninterrupted listening without ads or long skip times.
+
+👥
+User Segments
+Question 5
+Which user segments experience different discovery challenges?
+(Single-review finding) Users want to customize their listening experience, including album playback.
+
+Finding 5
+
+Observation: (Single-review finding) Users want to play albums in order.
+
+Supporting evidence: "cant play albums in order" (Review 37)
+
+Why it matters: This behavior is essential for users who value control over their listening experience, especially when it comes to album playback.
+
+4. What causes users to repeatedly listen to the same content?
+
+Here are 4 findings that explain why users repeatedly listen to the same content:
+
+1. (Single-review finding) Users experience repetition loops when using the DJ feature.
+
+Supporting evidence: Review 3 [App Store]: "When I use the dj it just plays the same stuff If I wanted to hear my liked sounds I would select my liked songs playlist"
+
+Why it matters: This behavior can lead to a frustrating experience for users who expect a more dynamic playlist.
+
+2. Users encounter issues with playlist recycling due to the auto-shuffle feature not working correctly.
+
+Supporting evidence: Review 78 [Play Store]: "My playlists are also on auto shuffle but it doesn't even work right."
+
+Review 69 [Play Store]: "If I click on a playlist it'll play a song or two then just start playing random music. It completely forgets what you were playing before."
+
+Why it matters: This can cause users to repeatedly listen to the same content, as the playlist does not refresh as expected.
+
+3. Smart shuffle can ruin custom playlists, leading to repetition.
+
+Supporting evidence: Review 58 [Play Store]: "When I enable smart shuffle it ruins my custom playlists."
+
+Why it matters: Users who rely on custom playlists may experience frustration when smart shuffle disrupts their carefully curated playlists.
+
+4. Users experience repetition due to the lack of a dislike button, which can lead to unwanted songs appearing in playlists.
+
+Supporting evidence: Review 55 [Play Store]: "I wish they would add a dislike button to compliment the heart. Hiding songs isn't the same. It doesn't solve the problem of a not liked song showing up on playlists."
+
+Why it matters: Without a dislike button, users may be forced to listen to songs they don't enjoy, leading to repetition.
+
+Here are the findings:
+
+1. Free users experience significant discovery challenges due to limited skips and ads.
+
+(
+
+Supporting evidence: Review 22 [App Store]: "Six skips an hour, no going back"; Review 45 [Play Store]: "4 ads in a row then it tells me I can enjoy 30 minutes ad free"; Review 48 [Play Store]: "it literally plays 1 song before I get another 2 minute set of ads"; Review 64 [Play Store]: "searching and playing a song is broken")
+
+Why it matters: Free users are hindered by ads and limited skips, making it difficult to discover new music.
+
+2. (Single-review finding) Premium users experience frustration when ads appear despite paying for the service.
+
+(
+
+Supporting evidence: Review 65 [Play Store]: "When ads appear when youre paying for Premium its very difficult to contact anyone to resolve the issue")
+
+Why it matters: Premium users expect a seamless experience without ads, and unexpected ads can lead to frustration.
+
+3. Some users find certain features, such as shuffle and play in order, to be basic interactions that should be free.
+
+(
+
+Supporting evidence: Review 70 [Play Store]: "It should be basic interaction that should be free")
+
+Why it matters: Users may feel that certain features are essential to the service and should not be restricted to premium users.
+
+💡
+Product Opportunities
+Question 6
+What unmet needs emerge consistently across reviews?
+Here are the unmet needs that emerge consistently across reviews:
+
+1. Lack of control over skip functionality: Users feel restricted by the limited skips allowed, with some experiencing frustration when ads interrupt their listening experience.
+
+Supporting evidence: "You can only skip 6 songs a day if you don't want to listen to them in sequence." (Review 72), "cant skip without long ads" (Review 37)
+
+Why it matters: Users value the ability to skip tracks without interruptions, which is essential for a seamless listening experience.
+
+2. Inadequate ad management: Users express frustration with the prevalence of ads, which can be intrusive and disrupt their listening experience.
+
+Supporting evidence: "ads are everywhere" (Review 43), "constant unneeded ads" (Review 35)
+
+Why it matters: Users want to enjoy their music without being interrupted by ads, which can be annoying and detract from their experience.
+
+3. Limited playlist customization: Users feel restricted by the lack of control over playlist settings, including the inability to create playlists without shuffle mode.
+
+Supporting evidence: "You can't even choose the songs you want to listen to" (Review 43), "cant make a playlist where its not on shuffle" (Review 43)
+
+Why it matters: Users value the ability to create playlists that cater to their preferences, which is essential for a personalized listening experience.
+
+4. Transparency and trust issues: Users express concerns about the app's business model, including the perceived nickel-and-diming of premium users.
+
+Supporting evidence: "I already pay for premium but that only allows for 15 hours of audiobooks and now they want me to pay for an add on thats the same price as the monthly fee" (Review 79)
+
+Why it matters: Users want to feel confident in the app's business practices and value for money, which is essential for building trust and loyalty.
+
+5. Discovery pain points: Users struggle to find music they enjoy, with some feeling frustrated by the lack of control over recommendations.
+
+Supporting evidence: "Hiding songs isn't the same. It doesn't solve the problem of a not liked song showing up on playlists" (Review 55)
+
+Why it matters: Users value the ability to discover new music that resonates with them, which is essential for a engaging and enjoyable listening experience.

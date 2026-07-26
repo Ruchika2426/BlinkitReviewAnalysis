@@ -1,0 +1,9 @@
+Theme,Keywords,Validation_Pct,Frequency,Source_Count,Discovery_Role,Interview_Validation
+Delivery Speed & Reliability,"['delivery', 'fast', 'minutes', 'min', 'startup']",30.31,676,13,enabler,not_tested
+Category Exploration Friction,"['saman', 'sath', 'nahin', 'kannada', 'kam']",3.84,216,5,driver,confirmed
+Word-of-Mouth as Discovery Trigger,"['delivery', 'focus', 'run', 'reported', 'range']",22.07,64,8,driver,new_from_interviews
+Habit & Routine Formation,"['quora', 'facebookzepto', 'mouthshut', 'zepto', 'app']",34.18,396,9,driver,confirmed
+Trust Barriers in Non-Grocery Categories,"['policies', 'information', 'concerns', 'traditional', 'higher']",5.16,145,7,driver,confirmed
+Payment & Refund Anxiety,"['payment', 'refund', 'order', 'dilevered', 'wallet']",28.15,89,4,driver,confirmed
+First-Experience Irreversibility,"['uninstalled', 'uninstall', 'first', 'removed', 'till']",7.3,35,6,driver,new_from_interviews
+Reliability in Emergencies (Trust Builder),"['ambulance', 'hospital', 'oxygen', 'patient', 'injured']",2.90,44,4,signal,new_from_interviews

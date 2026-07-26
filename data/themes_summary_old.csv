@@ -1,0 +1,11 @@
+Theme,Keywords,Validation_Pct,Frequency,Source_Count
+Convenience vs. Cost Tradeoff,"['blinkit', 'delivery', 'order', 'app', 'service']",79.36132465996451,337,12
+Category Exploration Friction,"['hai', 'blinkit', 'se', 'ka', 'bhi']",71.49615612063867,216,5
+Quick Commerce Routine Adoption,"['app', 'good', 'best', 'use', 'worst']",47.25014784151389,123,4
+Delivery Partner Trust Issues,"['blinkit', 'support', 'customer', 'delivery', 'product']",65.75990538143111,113,6
+Delivery Experience Expectations,"['good', 'blinkit', 'work', 'swiggy', 'delivery']",65.05026611472502,109,6
+Doorstep Delivery Expectations,"['delivery', 'time', 'fast', 'order', 'good']",55.706682436428146,105,5
+Convenience Driven Shopping,"['good', 'service', 'nice', 'quality', 'fast']",32.64340626848019,102,4
+Grocery Shopping Habit Shift,"['commerce', 'blinkit', 'quick', 'delivery', 'like']",59.78710821998817,89,8
+Payment Deduction Anxiety,"['order', 'payment', 'refund', 'money', 'cancel']",30.277942046126554,89,4
+Routine Grocery Restocking,"['zepto', 'blinkit', 'time', 'delivery', 'order']",71.91011235955057,82,9

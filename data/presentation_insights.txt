@@ -1,0 +1,53 @@
+Blinkit Review Analyser - Executive Insights
+=============================================
+
+Theme: Convenience vs. Cost Tradeoff
+- Frequency: Mentioned in 337 distinct user reviews.
+- Multichannel Presence: Discussed across 12 different platforms/sources.
+- Grounded Validation: 79.4% of all ingested data contains exact keywords defining this pain point (blinkit, delivery, order, app, service).
+
+Theme: Category Exploration Friction
+- Frequency: Mentioned in 216 distinct user reviews.
+- Multichannel Presence: Discussed across 5 different platforms/sources.
+- Grounded Validation: 71.5% of all ingested data contains exact keywords defining this pain point (hai, blinkit, se, ka, bhi).
+
+Theme: Quick Commerce Routine Adoption
+- Frequency: Mentioned in 123 distinct user reviews.
+- Multichannel Presence: Discussed across 4 different platforms/sources.
+- Grounded Validation: 47.3% of all ingested data contains exact keywords defining this pain point (app, good, best, use, worst).
+
+Theme: Delivery Partner Trust Issues
+- Frequency: Mentioned in 113 distinct user reviews.
+- Multichannel Presence: Discussed across 6 different platforms/sources.
+- Grounded Validation: 65.8% of all ingested data contains exact keywords defining this pain point (blinkit, support, customer, delivery, product).
+
+Theme: Delivery Experience Expectations
+- Frequency: Mentioned in 109 distinct user reviews.
+- Multichannel Presence: Discussed across 6 different platforms/sources.
+- Grounded Validation: 65.1% of all ingested data contains exact keywords defining this pain point (good, blinkit, work, swiggy, delivery).
+
+Theme: Doorstep Delivery Expectations
+- Frequency: Mentioned in 105 distinct user reviews.
+- Multichannel Presence: Discussed across 5 different platforms/sources.
+- Grounded Validation: 55.7% of all ingested data contains exact keywords defining this pain point (delivery, time, fast, order, good).
+
+Theme: Convenience Driven Shopping
+- Frequency: Mentioned in 102 distinct user reviews.
+- Multichannel Presence: Discussed across 4 different platforms/sources.
+- Grounded Validation: 32.6% of all ingested data contains exact keywords defining this pain point (good, service, nice, quality, fast).
+
+Theme: Grocery Shopping Habit Shift
+- Frequency: Mentioned in 89 distinct user reviews.
+- Multichannel Presence: Discussed across 8 different platforms/sources.
+- Grounded Validation: 59.8% of all ingested data contains exact keywords defining this pain point (commerce, blinkit, quick, delivery, like).
+
+Theme: Payment Deduction Anxiety
+- Frequency: Mentioned in 89 distinct user reviews.
+- Multichannel Presence: Discussed across 4 different platforms/sources.
+- Grounded Validation: 30.3% of all ingested data contains exact keywords defining this pain point (order, payment, refund, money, cancel).
+
+Theme: Routine Grocery Restocking
+- Frequency: Mentioned in 82 distinct user reviews.
+- Multichannel Presence: Discussed across 9 different platforms/sources.
+- Grounded Validation: 71.9% of all ingested data contains exact keywords defining this pain point (zepto, blinkit, time, delivery, order).
+

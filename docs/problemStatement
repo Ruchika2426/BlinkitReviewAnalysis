@@ -1,0 +1,250 @@
+Problem Statement
+Project Title
+AI-Powered Discovery Engine for Understanding User Shopping Behavior in Quick Commerce: A Growth Case Study for Blinkit
+Background
+The quick-commerce industry in India has experienced rapid growth, with platforms such as Blinkit, Zepto, Instamart, and BigBasket competing to provide ultra-fast grocery and essentials delivery. While these platforms generate millions of user interactions across app stores, social media, online communities, and discussion forums, much of this feedback remains unstructured and difficult to analyze at scale.
+For product managers, understanding why users purchase repeatedly, what drives category exploration, what frustrations they experience, and what unmet needs remain is essential for making data-driven product decisions. Manual analysis of thousands of reviews is time-consuming, inconsistent, and incapable of capturing emerging behavioral trends across multiple platforms.
+This project aims to solve this problem by building an AI-powered discovery engine that automatically collects, cleans, aggregates, analyzes, validates, and visualizes user feedback from multiple public sources to generate actionable product insights.
+
+Problem Statement
+Design and develop an AI-powered Discovery Engine that automatically collects user-generated content related to Blinkit from multiple public sources and analyzes it to generate validated behavioral insights that can be used for product growth decisions in a Blinkit Product Management Case Study.
+The system should gather large-scale user feedback from app stores, Reddit, community forums, social media discussions, product review websites, and quick-commerce discussions. It should then clean and deduplicate the data, identify recurring themes using AI, merge duplicate themes across different sources, validate the findings against raw data, and present the results through an interactive dashboard with supporting evidence and source citations.
+The final solution should help product managers understand user behavior, recurring pain points, shopping habits, category exploration patterns, unmet needs, and opportunities for improving customer engagement and retention.
+
+Objectives
+The discovery engine should:
+Collect large-scale user feedback from multiple online platforms.
+Aggregate all collected data into a unified dataset.
+Remove duplicate and low-quality records.
+Identify recurring customer themes using AI/NLP.
+Merge semantically similar themes appearing across multiple sources.
+Rank themes by occurrence and source diversity.
+Validate generated themes against the original dataset using keyword-based analysis.
+Generate presentation-ready insights backed by supporting evidence.
+Display all findings in an intuitive and interactive user interface.
+
+Data Sources
+The system should collect user discussions from:
+Google Play Store Reviews
+Apple App Store Reviews
+Reddit posts and comments
+Community Forums
+Social Media conversations
+Product Review websites
+Quick-commerce discussion platforms
+
+Functional Requirements
+Data Collection
+The system shall:
+Collect Google Play Store reviews using the google-play-scraper library.
+Collect Apple App Store reviews using the iTunes RSS Review Feed.
+Scrape Reddit posts and top comments using relevant search queries.
+Collect publicly available discussions from community forums.
+Collect social media conversations wherever publicly accessible.
+Collect product review discussions.
+Collect quick-commerce related discussions.
+The collected dataset shall contain:
+Column
+source
+date
+rating
+text
+url
+
+The data should be stored as:
+reviews_raw.csv
+
+Data Cleaning
+The engine should:
+Remove duplicate reviews.
+Remove duplicate discussions.
+Remove advertisements.
+Remove empty records.
+Remove entries containing fewer than six words.
+Normalize whitespace and formatting.
+Preserve source information.
+Target dataset size:
+1500+ unique reviews/discussions
+
+Theme Discovery
+Using AI/NLP techniques, the system should:
+Identify recurring customer themes.
+Group semantically similar themes.
+Merge duplicate themes from different sources.
+Store intermediate results in:
+themes_raw.json
+
+Theme Aggregation
+For every merged theme, calculate:
+Theme name
+Description
+Frequency count
+Number of sources where the theme appeared
+Example customer quotes
+Save as:
+themes_summary.csv
+
+Theme Ranking
+Rank themes according to:
+Total frequency
+Number of different sources
+Display the:
+Top 10 recurring themes
+
+Theme Validation
+To ensure insights are evidence-based rather than AI-generated assumptions, perform keyword-based validation by:
+Matching keywords associated with each theme against the raw dataset.
+Calculating the percentage of reviews discussing each theme.
+Adding:
+validation_pct
+to themes_summary.csv.
+
+Insight Generation
+Generate concise presentation-ready insights for the top themes.
+Example:
+Delivery reliability remains the strongest driver of customer loyalty, appearing in 42% of validated user discussions.
+Each insight should include:
+Theme
+Insight sentence
+Validation percentage
+
+User Interface Requirements
+Develop a clean and minimal dashboard that enables users to:
+Dashboard
+Display:
+Total reviews collected
+Reviews by source
+Top themes
+Validation percentages
+Recent reviews
+AI-generated insights
+Processing status
+Source citations
+Search
+Allow searching reviews by:
+Keyword
+Theme
+Source
+Visualizations
+Include:
+Theme frequency bar chart
+Source distribution chart
+Validation percentage chart
+Timeline of reviews
+Theme occurrence across sources
+Theme Explorer
+Display:
+Theme description
+Supporting quotes
+Source count
+Validation score
+Example reviews
+Insights Panel
+Answer questions such as:
+Why do users repeatedly buy from the same categories?
+What prevents users from exploring new categories?
+How do users discover products today?
+What shopping habits emerge repeatedly?
+What information do users need before trying a new category?
+What frustrations occur most frequently?
+Which user segments are more likely to experiment?
+What unmet customer needs consistently appear?
+Which product opportunities are most promising?
+
+Non-Functional Requirements
+The system should:
+Use only free and open-source libraries.
+Handle API failures gracefully.
+Retry failed requests automatically.
+Handle Reddit rate limits.
+Fall back to alternate sources when needed.
+Produce reproducible outputs.
+Maintain clean project structure.
+Generate logs for debugging.
+Scale to thousands of reviews.
+
+Expected Outputs
+The project should generate:
+reviews_raw.csv
+
+themes_raw.json
+
+themes_summary.csv
+
+dashboard/
+
+logs/
+
+charts/
+
+presentation_insights.txt
+
+
+Success Criteria
+The project will be considered successful if it:
+Collects 1500+ genuine and unique user discussions.
+Successfully integrates multiple public data sources.
+Identifies meaningful behavioral themes.
+Produces validated, evidence-backed insights.
+Includes supporting customer quotes and citations.
+Generates presentation-ready recommendations.
+Provides an intuitive, clean, and user-friendly dashboard.
+Helps product managers make informed growth decisions.
+
+High-Level Workflow
+               Multiple Data Sources
+                         │
+      ┌──────────────────┼──────────────────┐
+      │                  │                  │
+ Google Play      Apple App Store      Reddit API
+      │                  │                  │
+      └──────────────┬───┴──────────────────┘
+                     │
+             Community Forums
+                     │
+              Social Media Data
+                     │
+             Product Review Sites
+                     │
+          Quick-Commerce Discussions
+                     │
+                     ▼
+          Data Collection Pipeline
+                     │
+                     ▼
+            Data Cleaning & Filtering
+      (Deduplication, Noise Removal,
+      Low-value Review Elimination)
+                     │
+                     ▼
+            Unified Dataset
+          (reviews_raw.csv)
+                     │
+                     ▼
+         AI Theme Discovery Engine
+                     │
+                     ▼
+          Theme Merging & Clustering
+                     │
+                     ▼
+             themes_raw.json
+                     │
+                     ▼
+          Theme Frequency Ranking
+                     │
+                     ▼
+        Keyword-based Theme Validation
+                     │
+                     ▼
+         themes_summary.csv
+                     │
+                     ▼
+      Presentation-ready AI Insights
+                     │
+                     ▼
+        Interactive Analytics Dashboard
+
+
+Project Goal
+The goal of this project is to build an AI-powered Discovery Engine that transforms large volumes of unstructured customer feedback into validated, actionable product insights for a Blinkit growth case study. By automatically collecting discussions from multiple public platforms, identifying recurring behavioral themes, validating them against raw evidence, and presenting the results through an intuitive dashboard, the system enables product managers to understand customer behavior, uncover unmet needs, prioritize product improvements, and support strategic growth decisions with data-driven evidence rather than intuition.
+
