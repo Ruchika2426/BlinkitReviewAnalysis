@@ -131,7 +131,8 @@ def ask_groq(query: GroqQuery):
     """
     groq_api_key = os.getenv("GROQ_API_KEY")
     if not groq_api_key:
-        raise HTTPException(status_code=500, detail="GROQ_API_KEY not configured in .env")
+        keys = ", ".join([k for k in os.environ.keys() if "GROQ" in k or "API" in k])
+        raise HTTPException(status_code=500, detail=f"GROQ_API_KEY not configured in .env. Found similar keys: {keys}")
         
     client = Groq(api_key=groq_api_key)
     
@@ -190,7 +191,8 @@ def ask_custom_question(query: CustomGroqQuery):
     """
     groq_api_key = os.getenv("GROQ_API_KEY")
     if not groq_api_key:
-        raise HTTPException(status_code=500, detail="GROQ_API_KEY not configured in .env")
+        keys = ", ".join([k for k in os.environ.keys() if "GROQ" in k or "API" in k])
+        raise HTTPException(status_code=500, detail=f"GROQ_API_KEY not configured in .env. Found similar keys: {keys}")
     client = Groq(api_key=groq_api_key)
 
     file_path = os.path.join(DATA_DIR, 'themes_raw.json')
