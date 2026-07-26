@@ -318,41 +318,8 @@ export default function Dashboard() {
       </div>
 
       <div className="container">
-        <div className="header" style={{ position: 'relative', width: '100%' }}>
+        <div className="header">
           <div className="eyebrow">Lexicon + LLM classification · 3 research loops</div>
-          <button 
-            onClick={() => window.location.reload()}
-            style={{
-              position: 'absolute',
-              right: '0',
-              top: '20px',
-              background: 'var(--card-bg)', 
-              border: '1px solid var(--border-color)', 
-              color: 'var(--text-secondary)',
-              padding: '8px 16px',
-              borderRadius: '20px',
-              cursor: 'pointer',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-              transition: 'all 0.2s ease',
-              zIndex: 10
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.color = 'var(--text-primary)';
-              e.currentTarget.style.borderColor = 'var(--blinkit-yellow)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.color = 'var(--text-secondary)';
-              e.currentTarget.style.borderColor = 'var(--border-color)';
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/></svg>
-            Refresh
-          </button>
           <h1>
             Why do users struggle to <br />
             <span className="highlight-yellow">explo</span><span style={{ color: 'var(--blinkit-green)' }}>re</span> new categories?
