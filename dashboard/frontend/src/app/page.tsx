@@ -368,14 +368,14 @@ export default function Dashboard() {
 
         {/* CTA Button */}
         <div className="cta-container" style={{ marginBottom: '50px', textAlign: 'center' }}>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', width: '100%', maxWidth: '600px', margin: '0 auto' }}>
-            <button id="main-run-btn" className="run-btn" style={{ flex: 1 }} onClick={() => {
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', width: '100%', maxWidth: '600px', margin: '0 auto' }}>
+            <button id="main-run-btn" className="run-btn" style={{ flex: '1 1 250px' }} onClick={() => {
               setShowDashboardView(false);
               handleRunAnalysis();
             }} disabled={isAnalyzing || isDashboardLoading}>
               <Play fill="currentColor" size={20} /> {isAnalyzing ? 'Analyzing...' : `Analyze ${stats.total_reviews ? stats.total_reviews.toLocaleString() : '1,917'} Reviews →`}
             </button>
-            <button className="run-btn" style={{ flex: 1 }} disabled={isAnalyzing || isDashboardLoading} onClick={async () => {
+            <button className="run-btn" style={{ flex: '1 1 250px' }} disabled={isAnalyzing || isDashboardLoading} onClick={async () => {
               setIsDashboardLoading(true);
               await new Promise(resolve => setTimeout(resolve, 300));
               setShowDashboardView(true);
@@ -470,16 +470,16 @@ export default function Dashboard() {
                         Structured insights across eight product research questions
                       </p>
 
-                      <div style={{ display: 'flex', gap: '15px', flexWrap: 'nowrap', marginTop: '30px', marginBottom: '25px' }}>
-                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                      <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginTop: '30px', marginBottom: '25px' }}>
+                        <div className="result-metric-card" style={{ flex: '1 1 120px', minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                           <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>REVIEWS ANALYZED</div>
                           <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--blinkit-green)' }}>{stats.total_reviews > 0 ? stats.total_reviews.toLocaleString() + '+' : '...'}</div>
                         </div>
-                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                        <div className="result-metric-card" style={{ flex: '1 1 120px', minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                           <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>DATA SOURCES</div>
                           <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>{stats.sources_count > 0 ? stats.sources_count + ' platforms' : '...'}</div>
                         </div>
-                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                        <div className="result-metric-card" style={{ flex: '1 1 120px', minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                           <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>AI MODEL</div>
                           <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
                             {aiModel === 'openai/gpt-oss-120b' ? 'Groq GPT-OSS 120b' :
@@ -487,11 +487,11 @@ export default function Dashboard() {
                                 aiModel}
                           </div>
                         </div>
-                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                        <div className="result-metric-card" style={{ flex: '1 1 120px', minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                           <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>EXECUTION TIMESTAMP</div>
                           <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.4 }}>{executionTimestamp}<br />{executionTime}</div>
                         </div>
-                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                        <div className="result-metric-card" style={{ flex: '1 1 120px', minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                           <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>RESEARCH CONFIDENCE</div>
                           <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--blinkit-green)' }}>High</div>
                         </div>
