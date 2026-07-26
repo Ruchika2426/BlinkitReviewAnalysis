@@ -18,7 +18,7 @@ export default function Dashboard() {
   const [selectedQuestionFilter, setSelectedQuestionFilter] = useState("All");
   const [isDashboardLoading, setIsDashboardLoading] = useState(false);
   const [showDashboardView, setShowDashboardView] = useState(false);
-  
+
   const [customQuestion, setCustomQuestion] = useState("");
   const [isAskingCustom, setIsAskingCustom] = useState(false);
   const [customResult, setCustomResult] = useState<any>(null);
@@ -76,12 +76,12 @@ export default function Dashboard() {
         console.error("Custom JSON parse failed", e);
         throw new Error("Received an invalid response format from the AI.");
       }
-      
+
       setCustomResult(parsedResult);
       if (data.model) {
         setAiModel(data.model);
       }
-      
+
       // Auto-scroll after a short delay
       setTimeout(() => {
         const el = document.getElementById("custom-result-panel");
@@ -367,7 +367,7 @@ export default function Dashboard() {
 
 
         {/* CTA Button */}
-        <div className="cta-container" style={{ marginBottom: '100px', textAlign: 'center' }}>
+        <div className="cta-container" style={{ marginBottom: '50px', textAlign: 'center' }}>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', width: '100%', maxWidth: '600px', margin: '0 auto' }}>
             <button id="main-run-btn" className="run-btn" style={{ flex: 1 }} onClick={() => {
               setShowDashboardView(false);
@@ -394,336 +394,336 @@ export default function Dashboard() {
         </div>
 
         <div style={{ display: showDashboardView ? 'none' : 'block' }}>
-        {/* Research Questions Grid */}
-        {!isAnalyzing && (
-          <div style={{ marginBottom: '50px' }}>
-            <div className="questions-header">8 RESEARCH QUESTIONS BEING ANSWERED</div>
-            <div className="questions-grid">
-              {researchQuestions.map((q, idx) => {
-                const isSelected = selectedQuestionFilter === q;
-                const isFaded = hasRunAnalysis && selectedQuestionFilter !== "All" && !isSelected;
-                
-                return (
-                  <div 
-                    key={idx} 
-                    className="question-box"
-                    onClick={() => {
-                      if (hasRunAnalysis) {
-                        setSelectedQuestionFilter(isSelected ? "All" : q);
-                        setCustomResult(null); // Hide AI Findings panel when clicking a predefined question
-                        setCustomQuestion(""); // Clear out the input text as well
-                        setTimeout(() => {
-                          document.getElementById('analysis-results-panel')?.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                      }
-                    }}
-                    style={{
-                      cursor: hasRunAnalysis ? 'pointer' : 'default',
-                      opacity: isFaded ? 0.5 : 1,
-                      border: isSelected ? '2px solid var(--blinkit-green)' : '1px solid var(--border-color)',
-                      transition: 'all 0.2s ease'
-                    }}
-                  >
-                    <span className="question-number">Q{idx + 1}</span>
-                    <p className="question-text">{q}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
+          {/* Research Questions Grid */}
+          {!isAnalyzing && (
+            <div style={{ marginBottom: '50px' }}>
+              <div className="questions-header">8 RESEARCH QUESTIONS BEING ANSWERED</div>
+              <div className="questions-grid">
+                {researchQuestions.map((q, idx) => {
+                  const isSelected = selectedQuestionFilter === q;
+                  const isFaded = hasRunAnalysis && selectedQuestionFilter !== "All" && !isSelected;
 
-
-        {/* AI Analysis Result Panel */}
-        {hasRunAnalysis && (
-          <div id="analysis-results-panel" style={{ marginTop: '20px', marginBottom: '40px' }}>
-            {isAnalyzing ? (
-              <div className="analysis-result-panel" style={{ padding: '60px', display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '600px', margin: '0 auto' }}>
-                <h2 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '1.4rem' }}>Running AI thematic analysis</h2>
-                <p style={{ color: 'var(--text-secondary)', marginTop: '8px', marginBottom: '40px' }}>Please wait while the system processes your request</p>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', maxWidth: '400px' }}>
-                  {loadingSteps.map((step, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', color: loadingStep > idx ? 'var(--text-primary)' : 'transparent', transition: 'color 0.3s ease' }}>
-                      <span style={{ color: 'var(--blinkit-green)', marginRight: '12px', opacity: loadingStep > idx ? 1 : 0 }}>✓</span>
-                      <span style={{ fontSize: '1rem', fontWeight: 500, opacity: loadingStep > idx ? 1 : 0 }}>{step}</span>
+                  return (
+                    <div
+                      key={idx}
+                      className="question-box"
+                      onClick={() => {
+                        if (hasRunAnalysis) {
+                          setSelectedQuestionFilter(isSelected ? "All" : q);
+                          setCustomResult(null); // Hide AI Findings panel when clicking a predefined question
+                          setCustomQuestion(""); // Clear out the input text as well
+                          setTimeout(() => {
+                            document.getElementById('analysis-results-panel')?.scrollIntoView({ behavior: 'smooth' });
+                          }, 100);
+                        }
+                      }}
+                      style={{
+                        cursor: hasRunAnalysis ? 'pointer' : 'default',
+                        opacity: isFaded ? 0.5 : 1,
+                        border: isSelected ? '2px solid var(--blinkit-green)' : '1px solid var(--border-color)',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <span className="question-number">Q{idx + 1}</span>
+                      <p className="question-text">{q}</p>
                     </div>
-                  ))}
-
-                  {loadingStep >= 6 && (
-                    <>
-                      <div style={{ textAlign: 'center', color: 'var(--text-secondary)', margin: '10px 0' }}>↓</div>
-                      <div style={{ display: 'flex', alignItems: 'center', color: 'var(--blinkit-green)' }}>
-                        <span className="spinner" style={{ marginRight: '12px' }}></span>
-                        <span style={{ fontSize: '1rem', fontWeight: 500 }}>Running AI thematic analysis...</span>
-                      </div>
-                    </>
-                  )}
-                </div>
+                  );
+                })}
               </div>
-            ) : (
-              analysisResult && (
-                <>
-                  <div style={{ marginBottom: '30px' }}>
-                    <h2 id="results-header" style={{ fontSize: '2rem', fontWeight: 800, margin: '0 0 8px 0', letterSpacing: '-0.5px', color: 'var(--text-primary)' }}>Analysis Results</h2>
-                    <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '1.1rem' }}>
-                      Structured insights across eight product research questions
-                    </p>
+            </div>
+          )}
 
-                    <div style={{ display: 'flex', gap: '15px', flexWrap: 'nowrap', marginTop: '30px', marginBottom: '25px' }}>
-                      <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>REVIEWS ANALYZED</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--blinkit-green)' }}>{stats.total_reviews > 0 ? stats.total_reviews.toLocaleString() + '+' : '...'}</div>
+
+          {/* AI Analysis Result Panel */}
+          {hasRunAnalysis && (
+            <div id="analysis-results-panel" style={{ marginTop: '20px', marginBottom: '40px' }}>
+              {isAnalyzing ? (
+                <div className="analysis-result-panel" style={{ padding: '60px', display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '600px', margin: '0 auto' }}>
+                  <h2 style={{ color: 'var(--text-primary)', margin: 0, fontSize: '1.4rem' }}>Running AI thematic analysis</h2>
+                  <p style={{ color: 'var(--text-secondary)', marginTop: '8px', marginBottom: '40px' }}>Please wait while the system processes your request</p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', maxWidth: '400px' }}>
+                    {loadingSteps.map((step, idx) => (
+                      <div key={idx} style={{ display: 'flex', alignItems: 'center', color: loadingStep > idx ? 'var(--text-primary)' : 'transparent', transition: 'color 0.3s ease' }}>
+                        <span style={{ color: 'var(--blinkit-green)', marginRight: '12px', opacity: loadingStep > idx ? 1 : 0 }}>✓</span>
+                        <span style={{ fontSize: '1rem', fontWeight: 500, opacity: loadingStep > idx ? 1 : 0 }}>{step}</span>
                       </div>
-                      <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>DATA SOURCES</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>{stats.sources_count > 0 ? stats.sources_count + ' platforms' : '...'}</div>
-                      </div>
-                      <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>AI MODEL</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                          {aiModel === 'openai/gpt-oss-120b' ? 'Groq GPT-OSS 120b' : 
-                           aiModel === 'llama-3.3-70b-versatile' ? 'Groq Llama 3.3' : 
-                           aiModel}
+                    ))}
+
+                    {loadingStep >= 6 && (
+                      <>
+                        <div style={{ textAlign: 'center', color: 'var(--text-secondary)', margin: '10px 0' }}>↓</div>
+                        <div style={{ display: 'flex', alignItems: 'center', color: 'var(--blinkit-green)' }}>
+                          <span className="spinner" style={{ marginRight: '12px' }}></span>
+                          <span style={{ fontSize: '1rem', fontWeight: 500 }}>Running AI thematic analysis...</span>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                analysisResult && (
+                  <>
+                    <div style={{ marginBottom: '30px' }}>
+                      <h2 id="results-header" style={{ fontSize: '2rem', fontWeight: 800, margin: '0 0 8px 0', letterSpacing: '-0.5px', color: 'var(--text-primary)' }}>Analysis Results</h2>
+                      <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '1.1rem' }}>
+                        Structured insights across eight product research questions
+                      </p>
+
+                      <div style={{ display: 'flex', gap: '15px', flexWrap: 'nowrap', marginTop: '30px', marginBottom: '25px' }}>
+                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                          <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>REVIEWS ANALYZED</div>
+                          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--blinkit-green)' }}>{stats.total_reviews > 0 ? stats.total_reviews.toLocaleString() + '+' : '...'}</div>
+                        </div>
+                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                          <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>DATA SOURCES</div>
+                          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>{stats.sources_count > 0 ? stats.sources_count + ' platforms' : '...'}</div>
+                        </div>
+                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                          <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>AI MODEL</div>
+                          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                            {aiModel === 'openai/gpt-oss-120b' ? 'Groq GPT-OSS 120b' :
+                              aiModel === 'llama-3.3-70b-versatile' ? 'Groq Llama 3.3' :
+                                aiModel}
+                          </div>
+                        </div>
+                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                          <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>EXECUTION TIMESTAMP</div>
+                          <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.4 }}>{executionTimestamp}<br />{executionTime}</div>
+                        </div>
+                        <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+                          <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>RESEARCH CONFIDENCE</div>
+                          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--blinkit-green)' }}>High</div>
                         </div>
                       </div>
-                      <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>EXECUTION TIMESTAMP</div>
-                        <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.4 }}>{executionTimestamp}<br />{executionTime}</div>
-                      </div>
-                      <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>RESEARCH CONFIDENCE</div>
-                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--blinkit-green)' }}>High</div>
+
+                      <div style={{ display: 'flex', gap: '12px' }}>
+                        <button onClick={handleExportMarkdown} style={{ padding: '8px 16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '50px', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: 'border 0.2s' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--blinkit-green)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}>
+                          <span style={{ fontSize: '1.1rem', color: 'var(--blinkit-yellow)' }}>↓</span> Export Markdown
+                        </button>
+                        <button onClick={handleExportPDF} style={{ padding: '8px 16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '50px', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: 'border 0.2s' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--blinkit-green)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}>
+                          <span style={{ fontSize: '1.1rem', color: 'var(--blinkit-yellow)' }}>↓</span> Export PDF
+                        </button>
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '12px' }}>
-                      <button onClick={handleExportMarkdown} style={{ padding: '8px 16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '50px', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: 'border 0.2s' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--blinkit-green)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}>
-                        <span style={{ fontSize: '1.1rem', color: 'var(--blinkit-yellow)' }}>↓</span> Export Markdown
-                      </button>
-                      <button onClick={handleExportPDF} style={{ padding: '8px 16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '50px', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: 'border 0.2s' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--blinkit-green)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}>
-                        <span style={{ fontSize: '1.1rem', color: 'var(--blinkit-yellow)' }}>↓</span> Export PDF
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* AI Question & Insight Analysis Panel */}
-                  <div style={{ marginBottom: '40px' }}>
-                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '10px 10px 10px 20px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-                      <input 
-                        type="text" 
-                        value={customQuestion}
-                        onChange={(e) => setCustomQuestion(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' && !isAskingCustom && customQuestion.trim()) {
-                            handleAskCustomQuestion();
-                          }
-                        }}
-                        placeholder="Ask a custom question (e.g. why users buy dog food or cosmetics)..."
-                        style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent', color: 'var(--text-primary)', fontSize: '1rem' }}
-                      />
-                      <button 
-                        onClick={handleAskCustomQuestion}
-                        disabled={isAskingCustom || !customQuestion.trim()}
-                        style={{ 
-                          backgroundColor: 'var(--blinkit-yellow)', 
-                          color: '#000', 
-                          border: 'none', 
-                          borderRadius: '6px', 
-                          padding: '10px 24px', 
-                          fontWeight: 700, 
-                          cursor: (isAskingCustom || !customQuestion.trim()) ? 'not-allowed' : 'pointer',
-                          opacity: (isAskingCustom || !customQuestion.trim()) ? 0.6 : 1
-                        }}
-                      >
-                        {isAskingCustom ? 'Analyzing...' : 'Ask AI'}
-                      </button>
-                    </div>
-                    
-                    {customError && (
-                      <div style={{ marginTop: '16px', color: '#EF4444', fontSize: '0.9rem', padding: '12px', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px' }}>
-                        {customError}
+                    {/* AI Question & Insight Analysis Panel */}
+                    <div style={{ marginBottom: '40px' }}>
+                      <div style={{ display: 'flex', gap: '12px', alignItems: 'center', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '10px 10px 10px 20px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+                        <input
+                          type="text"
+                          value={customQuestion}
+                          onChange={(e) => setCustomQuestion(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !isAskingCustom && customQuestion.trim()) {
+                              handleAskCustomQuestion();
+                            }
+                          }}
+                          placeholder="Ask a custom question (e.g. why users buy dog food or cosmetics)..."
+                          style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent', color: 'var(--text-primary)', fontSize: '1rem' }}
+                        />
+                        <button
+                          onClick={handleAskCustomQuestion}
+                          disabled={isAskingCustom || !customQuestion.trim()}
+                          style={{
+                            backgroundColor: 'var(--blinkit-yellow)',
+                            color: '#000',
+                            border: 'none',
+                            borderRadius: '6px',
+                            padding: '10px 24px',
+                            fontWeight: 700,
+                            cursor: (isAskingCustom || !customQuestion.trim()) ? 'not-allowed' : 'pointer',
+                            opacity: (isAskingCustom || !customQuestion.trim()) ? 0.6 : 1
+                          }}
+                        >
+                          {isAskingCustom ? 'Analyzing...' : 'Ask AI'}
+                        </button>
                       </div>
-                    )}
-                    
-                    {customResult && (
-                      <div id="custom-result-panel" style={{ marginTop: '24px', borderTop: '1px solid var(--border-color)', paddingTop: '24px' }}>
-                        {customResult.outOfScope ? (
-                          <div style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.6, padding: '20px', backgroundColor: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                            {customResult.message}
-                          </div>
-                        ) : (
+
+                      {customError && (
+                        <div style={{ marginTop: '16px', color: '#EF4444', fontSize: '0.9rem', padding: '12px', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px' }}>
+                          {customError}
+                        </div>
+                      )}
+
+                      {customResult && (
+                        <div id="custom-result-panel" style={{ marginTop: '24px', borderTop: '1px solid var(--border-color)', paddingTop: '24px' }}>
+                          {customResult.outOfScope ? (
+                            <div style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.6, padding: '20px', backgroundColor: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                              {customResult.message}
+                            </div>
+                          ) : (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                              <h3 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: 800 }}>AI Findings</h3>
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                {customResult.findings?.map((f: any, j: number) => (
+                                  <div key={j} style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '20px', backgroundColor: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+                                    <div style={{ color: 'var(--text-primary)', fontSize: '1.05rem', fontWeight: 800, marginBottom: '4px' }}>
+                                      {f.findingNumber}
+                                    </div>
+                                    <div style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                      <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Observation: </span>
+                                      <span style={{ color: 'var(--text-secondary)' }}>{f.observation}</span>
+                                    </div>
+                                    <div style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                      <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Supporting evidence: </span>
+                                      <span style={{ color: 'var(--text-secondary)' }}>{f.evidence}</span>
+                                    </div>
+                                    <div style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                      <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Why it matters: </span>
+                                      <span style={{ color: 'var(--text-secondary)' }}>{f.impact}</span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* AI Output (Hidden when showing Custom Findings) */}
+                    {(!customResult || customResult.outOfScope) && (
+                      <div style={{ lineHeight: '1.6' }}>
+                        {Array.isArray(analysisResult) ? (
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                            <h3 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: 800 }}>AI Findings</h3>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                              {customResult.findings?.map((f: any, j: number) => (
-                                <div key={j} style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '20px', backgroundColor: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
-                                  <div style={{ color: 'var(--text-primary)', fontSize: '1.05rem', fontWeight: 800, marginBottom: '4px' }}>
-                                    {f.findingNumber}
+
+                            {analysisResult
+                              .filter((theme: any) => {
+                                if (selectedQuestionFilter === "All") return true;
+                                const selectedIndex = researchQuestions.indexOf(selectedQuestionFilter);
+
+                                return (
+                                  (theme.questionText && theme.questionText.includes(selectedQuestionFilter.replace(/\?$/, ''))) ||
+                                  (theme.questionText && selectedQuestionFilter.includes(theme.questionText.replace(/\?$/, ''))) ||
+                                  (theme.questionNumber && theme.questionNumber.includes(String(selectedIndex + 1))) ||
+                                  theme.questionText === selectedQuestionFilter
+                                );
+                              })
+                              .map((theme, i) => (
+                                <div key={i} style={{
+                                  backgroundColor: 'var(--card-bg)',
+                                  border: '1px solid var(--border-color)',
+                                  borderRadius: '12px',
+                                  padding: '24px',
+                                  color: 'var(--text-primary)',
+                                  fontFamily: 'system-ui, -apple-system, sans-serif'
+                                }}>
+                                  <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '24px' }}>
+                                    <div style={{
+                                      backgroundColor: 'rgba(245, 197, 24, 0.1)',
+                                      borderRadius: '8px',
+                                      width: '40px',
+                                      height: '40px',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      fontSize: '1.2rem',
+                                      flexShrink: 0
+                                    }}>
+                                      {theme.emoji}
+                                    </div>
+                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                      <div style={{ color: 'var(--blinkit-green)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                                        {theme.category === 'Habit & Routine Formation' ? 'Habitual reorder loop & Poor Discovery' :
+                                          theme.category === 'Payment & Refund Anxiety' ? 'Payment & Transaction Issues' :
+                                            theme.category}
+                                      </div>
+                                      <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', marginTop: '2px' }}>
+                                        {theme.questionNumber}
+                                      </div>
+                                      <div style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: 700, marginTop: '4px' }}>
+                                        {theme.questionText}
+                                      </div>
+                                      {theme.insightHeadline && (
+                                        <div style={{ color: 'var(--text-tertiary)', fontSize: '0.95rem', fontStyle: 'italic', marginTop: '6px' }}>
+                                          {theme.insightHeadline}
+                                        </div>
+                                      )}
+                                    </div>
                                   </div>
-                                  <div style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
-                                    <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Observation: </span>
-                                    <span style={{ color: 'var(--text-secondary)' }}>{f.observation}</span>
-                                  </div>
-                                  <div style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
-                                    <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Supporting evidence: </span>
-                                    <span style={{ color: 'var(--text-secondary)' }}>{f.evidence}</span>
-                                  </div>
-                                  <div style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
-                                    <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Why it matters: </span>
-                                    <span style={{ color: 'var(--text-secondary)' }}>{f.impact}</span>
+
+                                  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                    {theme.findings.map((f: any, j: number) => (
+                                      <div key={j} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <div style={{ color: 'var(--text-primary)', fontSize: '0.95rem', fontWeight: 700 }}>
+                                          {f.findingNumber}
+                                        </div>
+                                        <div style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
+                                          <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Observation: </span>
+                                          <span style={{ color: '#D1D5DB' }}>{f.observation}</span>
+                                        </div>
+                                        <div style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
+                                          <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Supporting evidence: </span>
+                                          <span style={{ color: '#D1D5DB' }}>{f.evidence}</span>
+                                        </div>
+                                        <div style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
+                                          <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Why it matters: </span>
+                                          <span style={{ color: '#D1D5DB' }}>{f.impact}</span>
+                                        </div>
+                                      </div>
+                                    ))}
                                   </div>
                                 </div>
                               ))}
-                            </div>
+                          </div>
+                        ) : (
+                          <div style={{ whiteSpace: 'pre-wrap', color: '#374151', fontFamily: 'monospace', padding: '20px', background: '#f3f4f6', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+                            {String(analysisResult)}
                           </div>
                         )}
                       </div>
                     )}
-                  </div>
-
-                  {/* AI Output (Hidden when showing Custom Findings) */}
-                  {(!customResult || customResult.outOfScope) && (
-                    <div style={{ lineHeight: '1.6' }}>
-                      {Array.isArray(analysisResult) ? (
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-
-                        {analysisResult
-                          .filter((theme: any) => {
-                            if (selectedQuestionFilter === "All") return true;
-                            const selectedIndex = researchQuestions.indexOf(selectedQuestionFilter);
-                            
-                            return (
-                              (theme.questionText && theme.questionText.includes(selectedQuestionFilter.replace(/\?$/, ''))) ||
-                              (theme.questionText && selectedQuestionFilter.includes(theme.questionText.replace(/\?$/, ''))) ||
-                              (theme.questionNumber && theme.questionNumber.includes(String(selectedIndex + 1))) ||
-                              theme.questionText === selectedQuestionFilter
-                            );
-                          })
-                          .map((theme, i) => (
-                          <div key={i} style={{
-                            backgroundColor: 'var(--card-bg)',
-                            border: '1px solid var(--border-color)',
-                            borderRadius: '12px',
-                            padding: '24px',
-                            color: 'var(--text-primary)',
-                            fontFamily: 'system-ui, -apple-system, sans-serif'
-                          }}>
-                            <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', marginBottom: '24px' }}>
-                              <div style={{
-                                backgroundColor: 'rgba(245, 197, 24, 0.1)',
-                                borderRadius: '8px',
-                                width: '40px',
-                                height: '40px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: '1.2rem',
-                                flexShrink: 0
-                              }}>
-                                {theme.emoji}
-                              </div>
-                              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                <div style={{ color: 'var(--blinkit-green)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                                  {theme.category === 'Habit & Routine Formation' ? 'Habitual reorder loop & Poor Discovery' : 
-                                   theme.category === 'Payment & Refund Anxiety' ? 'Payment & Transaction Issues' : 
-                                   theme.category}
-                                </div>
-                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', marginTop: '2px' }}>
-                                  {theme.questionNumber}
-                                </div>
-                                <div style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: 700, marginTop: '4px' }}>
-                                  {theme.questionText}
-                                </div>
-                                {theme.insightHeadline && (
-                                  <div style={{ color: 'var(--text-tertiary)', fontSize: '0.95rem', fontStyle: 'italic', marginTop: '6px' }}>
-                                    {theme.insightHeadline}
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                              {theme.findings.map((f: any, j: number) => (
-                                <div key={j} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                  <div style={{ color: 'var(--text-primary)', fontSize: '0.95rem', fontWeight: 700 }}>
-                                    {f.findingNumber}
-                                  </div>
-                                  <div style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
-                                    <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Observation: </span>
-                                    <span style={{ color: '#D1D5DB' }}>{f.observation}</span>
-                                  </div>
-                                  <div style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
-                                    <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Supporting evidence: </span>
-                                    <span style={{ color: '#D1D5DB' }}>{f.evidence}</span>
-                                  </div>
-                                  <div style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
-                                    <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>Why it matters: </span>
-                                    <span style={{ color: '#D1D5DB' }}>{f.impact}</span>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div style={{ whiteSpace: 'pre-wrap', color: '#374151', fontFamily: 'monospace', padding: '20px', background: '#f3f4f6', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
-                        {String(analysisResult)}
-                      </div>
-                    )}
-                  </div>
-                  )}
 
 
-                </>
-              )
-            )}
-          </div>
-        )}
+                  </>
+                )
+              )}
+            </div>
+          )}
 
-        {/* Refresh Button at the bottom (inline left) */}
-        {hasRunAnalysis && !isAnalyzing && analysisResult && (
-          <div style={{ marginTop: '20px', marginBottom: '60px', padding: '0 20px' }}>
-            <button
-              onClick={() => {
-                handleRunAnalysis();
-                setTimeout(() => {
-                  const btn = document.getElementById('main-run-btn');
-                  if (btn) {
-                    const y = btn.getBoundingClientRect().top + window.scrollY - 80;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                  }
-                }, 50);
-              }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 20px',
-                backgroundColor: 'transparent',
-                color: 'var(--text-secondary)',
-                border: '1px solid var(--text-tertiary)',
-                borderRadius: '50px',
-                cursor: 'pointer',
-                fontWeight: 500,
-                fontSize: '0.95rem',
-                transition: 'background-color 0.2s ease, color 0.2s ease'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--card-hover)';
-                e.currentTarget.style.color = 'var(--text-primary)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}
-            >
-              <RefreshCw size={16} />
-              Run again
-            </button>
-          </div>
-        )}
+          {/* Refresh Button at the bottom (inline left) */}
+          {hasRunAnalysis && !isAnalyzing && analysisResult && (
+            <div style={{ marginTop: '20px', marginBottom: '60px', padding: '0 20px' }}>
+              <button
+                onClick={() => {
+                  handleRunAnalysis();
+                  setTimeout(() => {
+                    const btn = document.getElementById('main-run-btn');
+                    if (btn) {
+                      const y = btn.getBoundingClientRect().top + window.scrollY - 80;
+                      window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                  }, 50);
+                }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '8px 20px',
+                  backgroundColor: 'transparent',
+                  color: 'var(--text-secondary)',
+                  border: '1px solid var(--text-tertiary)',
+                  borderRadius: '50px',
+                  cursor: 'pointer',
+                  fontWeight: 500,
+                  fontSize: '0.95rem',
+                  transition: 'background-color 0.2s ease, color 0.2s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--card-hover)';
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
+                }}
+              >
+                <RefreshCw size={16} />
+                Run again
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Semantic Clusters Dashboard View */}
@@ -741,9 +741,9 @@ export default function Dashboard() {
               <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>AI MODEL</div>
                 <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                  {aiModel === 'openai/gpt-oss-120b' ? 'Groq GPT-OSS 120b' : 
-                   aiModel === 'llama-3.3-70b-versatile' ? 'Groq Llama 3.3' : 
-                   aiModel}
+                  {aiModel === 'openai/gpt-oss-120b' ? 'Groq GPT-OSS 120b' :
+                    aiModel === 'llama-3.3-70b-versatile' ? 'Groq Llama 3.3' :
+                      aiModel}
                 </div>
               </div>
               <div className="result-metric-card" style={{ flex: 1, minWidth: '0', padding: '16px', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
@@ -757,63 +757,63 @@ export default function Dashboard() {
             </div>
 
             <div style={{ background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '30px', marginBottom: '40px' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: 800, margin: '0 0 10px 0', color: 'var(--text-primary)' }}>Top Pain Points (Semantic Clusters)</h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '30px', lineHeight: 1.5 }}>
-              Two forces suppress category exploration: habit loops that keep users on autopilot, and trust gaps in unfamiliar categories — freshness, authenticity, and hygiene doubts that make trying a new category feel risky.
-            </p>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, margin: '0 0 10px 0', color: 'var(--text-primary)' }}>Top Pain Points (Semantic Clusters)</h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '30px', lineHeight: 1.5 }}>
+                Two forces suppress category exploration: habit loops that keep users on autopilot, and trust gaps in unfamiliar categories — freshness, authenticity, and hygiene doubts that make trying a new category feel risky.
+              </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {[...themes].sort((a,b) => b.Frequency - a.Frequency).map((theme, idx) => {
-                const percentage = stats.total_reviews ? ((theme.Frequency / stats.total_reviews) * 100).toFixed(2) : (theme.Validation_Pct).toFixed(2);
-                
-                const getThemeTag = (themeName: string) => {
-                  const name = themeName.toLowerCase();
-                  if (name.includes('habit') || name.includes('routine')) return { label: 'HABIT LOOP', color: 'var(--blinkit-yellow)', bg: 'rgba(245, 197, 24, 0.1)', border: 'rgba(245, 197, 24, 0.5)' };
-                  if (name.includes('trust') || name.includes('reliability') && name.includes('emergencies')) return { label: 'TRUST GAP', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.1)', border: 'rgba(244, 63, 94, 0.5)' };
-                  if (name.includes('payment') || name.includes('refund')) return { label: 'FINANCIAL FRICTION', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.1)', border: 'rgba(244, 63, 94, 0.5)' };
-                  if (name.includes('speed') || name.includes('delivery')) return { label: 'OPERATIONAL', color: '#3b82f6', bg: 'rgba(59, 130, 246, 0.1)', border: 'rgba(59, 130, 246, 0.5)' };
-                  if (name.includes('exploration') || name.includes('word-of-mouth') || name.includes('discovery')) return { label: 'DISCOVERY DRIVER', color: '#a855f7', bg: 'rgba(168, 85, 247, 0.1)', border: 'rgba(168, 85, 247, 0.5)' };
-                  return { label: 'GENERAL FRICTION', color: 'var(--text-secondary)', bg: 'transparent', border: 'var(--border-color)' };
-                };
-                
-                const tag = getThemeTag(theme.Theme);
-                
-                return (
-                  <div key={idx} style={{ border: '1px solid var(--border-color)', borderRadius: '8px', padding: '20px', background: 'var(--bg-color)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '10px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                        <span style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)' }}>
-                          {theme.Theme === 'Habit & Routine Formation' ? 'Habitual reorder loop & Poor Discovery' : 
-                           theme.Theme === 'Payment & Refund Anxiety' ? 'Payment & Transaction Issues' : 
-                           theme.Theme}
-                        </span>
-                        <span style={{ 
-                          fontSize: '0.65rem', 
-                          fontWeight: 800, 
-                          padding: '4px 10px', 
-                          borderRadius: '50px',
-                          border: tag.border,
-                          color: tag.color,
-                          backgroundColor: tag.bg,
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.5px',
-                          whiteSpace: 'nowrap'
-                        }}>
-                          {tag.label}
-                        </span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {[...themes].sort((a, b) => b.Frequency - a.Frequency).map((theme, idx) => {
+                  const percentage = stats.total_reviews ? ((theme.Frequency / stats.total_reviews) * 100).toFixed(2) : (theme.Validation_Pct).toFixed(2);
+
+                  const getThemeTag = (themeName: string) => {
+                    const name = themeName.toLowerCase();
+                    if (name.includes('habit') || name.includes('routine')) return { label: 'HABIT LOOP', color: 'var(--blinkit-yellow)', bg: 'rgba(245, 197, 24, 0.1)', border: 'rgba(245, 197, 24, 0.5)' };
+                    if (name.includes('trust') || name.includes('reliability') && name.includes('emergencies')) return { label: 'TRUST GAP', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.1)', border: 'rgba(244, 63, 94, 0.5)' };
+                    if (name.includes('payment') || name.includes('refund')) return { label: 'FINANCIAL FRICTION', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.1)', border: 'rgba(244, 63, 94, 0.5)' };
+                    if (name.includes('speed') || name.includes('delivery')) return { label: 'OPERATIONAL', color: '#3b82f6', bg: 'rgba(59, 130, 246, 0.1)', border: 'rgba(59, 130, 246, 0.5)' };
+                    if (name.includes('exploration') || name.includes('word-of-mouth') || name.includes('discovery')) return { label: 'DISCOVERY DRIVER', color: '#a855f7', bg: 'rgba(168, 85, 247, 0.1)', border: 'rgba(168, 85, 247, 0.5)' };
+                    return { label: 'GENERAL FRICTION', color: 'var(--text-secondary)', bg: 'transparent', border: 'var(--border-color)' };
+                  };
+
+                  const tag = getThemeTag(theme.Theme);
+
+                  return (
+                    <div key={idx} style={{ border: '1px solid var(--border-color)', borderRadius: '8px', padding: '20px', background: 'var(--bg-color)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '10px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                          <span style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)' }}>
+                            {theme.Theme === 'Habit & Routine Formation' ? 'Habitual reorder loop & Poor Discovery' :
+                              theme.Theme === 'Payment & Refund Anxiety' ? 'Payment & Transaction Issues' :
+                                theme.Theme}
+                          </span>
+                          <span style={{
+                            fontSize: '0.65rem',
+                            fontWeight: 800,
+                            padding: '4px 10px',
+                            borderRadius: '50px',
+                            border: tag.border,
+                            color: tag.color,
+                            backgroundColor: tag.bg,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px',
+                            whiteSpace: 'nowrap'
+                          }}>
+                            {tag.label}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                          {theme.Frequency} items <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>({percentage}%)</span>
+                        </div>
                       </div>
-                      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                        {theme.Frequency} items <span style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>({percentage}%)</span>
+                      <div style={{ height: '8px', width: '100%', backgroundColor: 'var(--border-color)', borderRadius: '50px', overflow: 'hidden' }}>
+                        <div style={{ height: '100%', width: `${percentage}%`, backgroundColor: 'var(--blinkit-yellow)', borderRadius: '50px' }}></div>
                       </div>
                     </div>
-                    <div style={{ height: '8px', width: '100%', backgroundColor: 'var(--border-color)', borderRadius: '50px', overflow: 'hidden' }}>
-                      <div style={{ height: '100%', width: `${percentage}%`, backgroundColor: 'var(--blinkit-yellow)', borderRadius: '50px' }}></div>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
           </div>
         )}
         {/* Universal Footer */}
