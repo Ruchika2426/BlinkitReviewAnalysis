@@ -1,6 +1,8 @@
 #!/bin/bash
 echo "Starting data pipeline..."
-source venv/bin/activate
+if [ -d "venv" ]; then
+    source venv/bin/activate
+fi
 python src/run_collectors.py
 python src/clean_data.py
 python src/extract_themes.py
