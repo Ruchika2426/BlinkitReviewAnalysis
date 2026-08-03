@@ -80,6 +80,18 @@ def run_all_collectors():
     
     # Save to standard path
     output_path = os.path.join('data', 'reviews_raw.csv')
+    
+    if os.path.exists(output_path):
+        print("\n--- 6. Merging with Historical Data ---")
+        try:
+            historical_df = pd.read_csv(output_path)
+            print(f"Loaded {len(historical_df)} historical records.")
+            master_df = pd.concat([historical_df, master_df], ignore_index=True)
+            master_df = master_df.drop_duplicates(subset=['text', 'source'], keep='last')
+            print(f"After merging and deduplicating, total dataset size is {len(master_df)} records.")
+        except Exception as e:
+            print(f"Failed to load historical data: {e}")
+            
     master_df.to_csv(output_path, index=False, encoding='utf-8')
     
     print(f"\n[{datetime.now()}] ✅ Data collection complete! Saved to {output_path}")
