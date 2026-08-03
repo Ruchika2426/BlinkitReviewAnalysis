@@ -832,7 +832,7 @@ export default function Dashboard() {
         )}
         {/* Universal Footer */}
         <div className="footer-line" style={{ padding: '40px 20px', textAlign: 'center', marginTop: 'auto' }}>
-          Built with Llama 3.3 API · Validated against primary research · Growth Team · July 2026
+          Built with Groq GPT-OSS 120b API · Validated against primary research · Growth Team · July 2026
         </div>
       </div>
     </div>
