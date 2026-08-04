@@ -11,7 +11,7 @@ Theme: Trust in Quick Commerce
 - Multichannel Presence: Discussed across 4 different platforms/sources.
 - Grounded Validation: 71.3% of all ingested data contains exact keywords defining this pain point (app, hai, order, service, se).
 
-Theme: Convenience vs. Customer Trust
+Theme: Convenience vs. Trust Tradeoff
 - Frequency: Mentioned in 181 distinct user reviews.
 - Multichannel Presence: Discussed across 11 different platforms/sources.
 - Grounded Validation: 72.2% of all ingested data contains exact keywords defining this pain point (blinkit, delivery, order, customer, service).
