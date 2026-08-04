@@ -125,14 +125,14 @@ export default function Dashboard() {
     
     ## RESEARCH QUESTIONS & THEME MAPPING
     Answer the 8 research questions below. You MUST strictly use the assigned Theme for each question.
-    Question 1: Why do users repeatedly buy from the same categories? -> Map to Theme: "Delivery Speed & Reliability"
-    Question 2: What prevents users from exploring new categories? -> Map to Theme: "Category Exploration Friction"
-    Question 3: How do users discover products today? -> Map to Theme: "Word-of-Mouth as Discovery Trigger"
-    Question 4: What role do habits play in shopping behavior? -> Map to Theme: "Habit & Routine Formation"
-    Question 5: What information do users need before trying a new category? -> Map to Theme: "Trust Barriers in Non-Grocery Categories"
-    Question 6: What frustrations emerge repeatedly? -> Map to Theme: "Payment & Refund Anxiety"
-    Question 7: Which user segments are more likely to experiment? -> Map to Theme: "First-Experience Irreversibility"
-    Question 8: What unmet needs emerge consistently across discussions? -> Map to Theme: "Reliability in Emergencies (Trust Builder)"
+    Question 1: Why do users repeatedly buy from the same categories? -> Map to Theme: "Delivery & Reliability"
+    Question 2: What prevents users from exploring new categories? -> Map to Theme: "Category Friction"
+    Question 3: How do users discover products today? -> Map to Theme: "Reorder Loop & Discovery Friction"
+    Question 4: What role do habits play in shopping behavior? -> Map to Theme: "Reorder Loop & Discovery Friction"
+    Question 5: What information do users need before trying a new category? -> Map to Theme: "Non-Grocery Trust Gaps"
+    Question 6: What frustrations emerge repeatedly? -> Map to Theme: "Non-Grocery Trust Gaps"
+    Question 7: Which user segments are more likely to experiment? -> Map to Theme: "Category Friction"
+    Question 8: What unmet needs emerge consistently across discussions? -> Map to Theme: "Delivery & Reliability"
     
     ## RULES
     1. Only cite real reviews from the dataset. Use the 'id' field.
@@ -288,12 +288,12 @@ export default function Dashboard() {
         } else {
           setInitialLoadError(`API Error: /api/themes returned ${themesRes.status}`);
         }
-        
+
         if (statsRes.ok) {
           const statsData = await statsRes.json();
           setStats(statsData);
         } else {
-          if(!initialLoadError) setInitialLoadError(`API Error: /api/stats returned ${statsRes.status}`);
+          if (!initialLoadError) setInitialLoadError(`API Error: /api/stats returned ${statsRes.status}`);
         }
       } catch (error: any) {
         console.error("Error fetching data:", error);
@@ -639,9 +639,7 @@ export default function Dashboard() {
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                                       <div style={{ color: 'var(--blinkit-green)', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                                        {theme.category === 'Habit & Routine Formation' ? 'Habitual reorder loop & Poor Discovery' :
-                                          theme.category === 'Payment & Refund Anxiety' ? 'Payment & Transaction Issues' :
-                                            theme.category}
+                                        {theme.category}
                                       </div>
                                       <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', marginTop: '2px' }}>
                                         {theme.questionNumber}
