@@ -150,17 +150,17 @@ def ask_groq(query: GroqQuery):
             t = r.get('theme')
             if t in target_themes:
                 if len(theme_quotes[t]) < 2:
-                    theme_quotes[t].append((row_idx, r.get('text')))
+                    theme_quotes[t].append((row_idx, r.get('text'), r.get('source', 'Unknown')))
                 
-        context = "Here are the top recurring themes identified in our customer reviews dataset, along with real user quotes (and their database Row Numbers) for each:\n"
+        context = "Here are the top recurring themes identified in our customer reviews dataset, along with real user quotes (and their database Row Numbers and Source) for each:\n"
         for t, quotes in list(theme_quotes.items()):
             context += f"- Theme: '{t}'.\n"
-            for (row_num, text) in quotes:
+            for (row_num, text, source) in quotes:
                 clean_q = str(text).replace('\n', ' ').strip()
                 # Truncate overly long quotes to save prompt tokens
                 if len(clean_q) > 300:
                     clean_q = clean_q[:300] + "..."
-                context += f"  - Review Row #{row_num}: \"{clean_q}\"\n"
+                context += f"  - Review Row #{row_num} [Source: {source}]: \"{clean_q}\"\n"
         
     system_prompt = f"""You are an expert Product Manager assistant for a Quick Commerce app (like Blinkit or Zepto).
 Context about our specific dataset:
