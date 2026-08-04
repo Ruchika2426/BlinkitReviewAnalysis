@@ -175,7 +175,7 @@ CRITICAL: You MUST answer ALL 8 questions. Do NOT stop early. Your JSON array mu
             ],
             model="openai/gpt-oss-120b",
             temperature=0.2,
-            max_tokens=5500,
+            max_tokens=2500,
         )
         return {
             "response": chat_completion.choices[0].message.content,
@@ -250,7 +250,7 @@ CRITICAL: Output ONLY valid JSON. Escape internal quotes with \\". No markdown w
             ],
             model="openai/gpt-oss-120b",
             temperature=0.1,
-            max_tokens=4000,
+            max_tokens=2000,
         )
         return {
             "response": chat_completion.choices[0].message.content,
