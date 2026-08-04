@@ -143,21 +143,23 @@ def ask_groq(query: GroqQuery):
         with open(file_path, 'r', encoding='utf-8') as f:
             reviews_data = json.load(f)
             
-        # Grab up to 3 sample quotes per theme with row numbers
-        theme_quotes = {}
+        target_themes = {"Delivery & Reliability", "Reorder Loop & Discovery Friction", "Category Friction", "Non-Grocery Trust Gaps"}
+        theme_quotes = {t: [] for t in target_themes}
+        
         for row_idx, r in enumerate(reviews_data, start=1):
             t = r.get('theme')
-            if t:
-                if t not in theme_quotes:
-                    theme_quotes[t] = []
+            if t in target_themes:
                 if len(theme_quotes[t]) < 2:
                     theme_quotes[t].append((row_idx, r.get('text')))
                 
         context = "Here are the top recurring themes identified in our customer reviews dataset, along with real user quotes (and their database Row Numbers) for each:\n"
-        for t, quotes in list(theme_quotes.items()): # include all themes to ensure coverage for all 8 questions
+        for t, quotes in list(theme_quotes.items()):
             context += f"- Theme: '{t}'.\n"
             for (row_num, text) in quotes:
                 clean_q = str(text).replace('\n', ' ').strip()
+                # Truncate overly long quotes to save prompt tokens
+                if len(clean_q) > 300:
+                    clean_q = clean_q[:300] + "..."
                 context += f"  - Review Row #{row_num}: \"{clean_q}\"\n"
         
     system_prompt = f"""You are an expert Product Manager assistant for a Quick Commerce app (like Blinkit or Zepto).
@@ -175,7 +177,7 @@ CRITICAL: You MUST answer ALL 8 questions. Do NOT stop early. Your JSON array mu
             ],
             model="openai/gpt-oss-120b",
             temperature=0.2,
-            max_tokens=2500,
+            max_tokens=4500,
         )
         return {
             "response": chat_completion.choices[0].message.content,
