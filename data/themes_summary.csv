@@ -1,7 +1,7 @@
 Theme,Keywords,Validation_Pct,Frequency,Source_Count
 Price Sensitivity and Value Perception,"['blinkit', 'change', 'app', 'service', 'good']",72.25732337736933,274,11
 Trust in Quick Commerce,"['app', 'hai', 'order', 'service', 'se']",71.28087306145893,198,4
-Convenience vs. Trust Tradeoff,"['blinkit', 'delivery', 'order', 'customer', 'service']",72.19988512349225,181,11
+Convenience vs. Customer Trust,"['blinkit', 'delivery', 'order', 'customer', 'service']",72.19988512349225,181,11
 Doorstep Delivery Expectations,"['delivery', 'fast', 'time', 'good', 'order']",55.025847214244685,137,3
 Trust in Delivery Process,"['order', 'product', 'delivery', 'blinkit', 'ordered']",70.53417576105686,132,7
 Routine Grocery Restocking,"['good', 'service', 'time', 'fast', 'nice']",40.4939689833429,125,4
