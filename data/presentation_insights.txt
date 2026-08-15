@@ -29,7 +29,7 @@ Theme: Trust in Delivery Process
 Theme: Routine Grocery Restocking
 - Frequency: Mentioned in 125 distinct user reviews.
 - Multichannel Presence: Discussed across 4 different platforms/sources.
-- Grounded Validation: 40.7% of all ingested data contains exact keywords defining this pain point (good, service, time, fast, great).
+- Grounded Validation: 40.5% of all ingested data contains exact keywords defining this pain point (good, service, time, fast, nice).
 
 Theme: Quick Commerce Routine Adoption
 - Frequency: Mentioned in 116 distinct user reviews.
